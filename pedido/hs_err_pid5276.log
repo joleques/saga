@@ -1,0 +1,21 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f357cd61729, pid=5276, tid=5301
+#
+# JRE version: OpenJDK Runtime Environment (11.0.6+10) (build 11.0.6+10)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.6+10, mixed mode, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libjimage.so+0x2729]  ImageStrings::find(Endian*, char const*, int*, unsigned int)+0x69
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P %E" (or dumping to /home/joleques/Documentos/workspace/estudos/saga/pedido/core.5276)
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:35905 -javaagent:/home/joleques/eclipse/jee-2020-03/eclipse/configuration/org.eclipse.osgi/405/0/.cp/lib/javaagent-shaded.jar -Dfile.encoding=UTF-8 com.poc.saga.PedidoApplication
+
+Host: 
