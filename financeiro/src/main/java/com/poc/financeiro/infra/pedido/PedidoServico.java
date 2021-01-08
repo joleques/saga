@@ -16,7 +16,7 @@ public class PedidoServico {
 	
 	public ClienteDTO buscaPedido(String codigoPedido) {
 		try {
-			URI url = new URI("http://localhost:8081/pedido/cliente/" + codigoPedido);
+			URI url = new URI("http://api-pedido:8081/pedido/cliente/" + codigoPedido);
 			ResponseEntity<ClienteDTO> forEntity = restTemplate.getForEntity(url, ClienteDTO.class);
 			return forEntity.getBody();
 		} catch (Exception e) {

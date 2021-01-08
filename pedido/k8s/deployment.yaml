@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-pedido
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-pedido
+  template:
+    metadata:
+      labels:
+        app: api-pedido
+    spec:
+      containers:
+      - name: api-pedido
+        image: joleques/api_pedido:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8081

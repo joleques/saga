@@ -7,7 +7,7 @@ spring:
    application:
       name: Pedido
    rabbitmq:
-      host: localhost
+      host: api_rabbitmq
       port: 5672
       username: guest
       password: guest
