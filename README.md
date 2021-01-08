@@ -1,14 +1,15 @@
 ## SAGA Pattern: ##
 
-Em uma arquitetura de microsserviços onde cada serviço deve ter seu proprio banco de dados e não pode ser acessivel diretamente por outro serviço, mesmo gerando um acoplamento baixo isso introduz alguns problemas e entre eles a conscistencia de dados.
+Em uma arquitetura de microsserviços cada serviço deve ter seu próprio banco de dados, não podendo ser acessível diretamente por outro serviço, gerando assim um baixo acoplamento. Entretanto isso introduz alguns problemas, entre eles a consistência de dados. 
 
-O padrão de design SAGA é utilizado em transações distribuidas, servindo para gerenciar a conscistencia dos dados. Uma SAGA nada mais do que uma sequencia de transações que atualiza cada serviço e disparando notificaçoes (evento ou mensagem) para a proxima transação, ou compensação, transações que neutralizam as anteriores.
+O padrão de design SAGA é utilizado em transações distribuídas, servindo para gerenciar a consistêcia dos dados. Uma SAGA nada mais é do que uma sequência de atualizações ou compensações, que disparam notificações (evento ou mensagem) para a próxima ou para a transação anterior.
+
 
 A SAGA pode ser orquestrada ou coreografada:
 
-- Orquestrada: Utiliza um ponto que controla e centraliza a SAGA.
+- Orquestrada: Utiliza um ponto que a controla e centraliza.
 
-- Coreografada: Troca de mensagens ou eventos sem um ponto de controle centralizado.
+- Coreografada: Troca mensagens ou eventos sem um ponto de controle centralizado.
 
 ## Dependências: ##
 
@@ -26,7 +27,7 @@ A SAGA pode ser orquestrada ou coreografada:
 
 ## Detalhes da POC: ##
 
-Foi desenvolvido dois seriços para simular um pedido. Um dos serviços é o responsavel por criar o pedido e o outro serviço é responsavel pelo controle financeiro.
+Foram desenvolvidos dois seriços simulando um pedido. Um dos serviços é o responsavel por criar o pedido e o outro é responsável pelo controle financeiro.
 
 Abaixo a SAGA:
 ![SAGA](./doc/saga.png)
