@@ -41,7 +41,7 @@ docker network create --driver bridge api_saga
 
 - Subir container RabbitMQ
 ```
-docker run --name api_rabbitmq --net api_saga -d -p 8085:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
+docker run --name rabbitmq --net api_saga -d -p 8085:15672 -p 5672:5672 -p 25676:25676 rabbitmq:3-management
 ```
 
 - Configurar Rabbit
@@ -93,9 +93,40 @@ docker build --tag <nome da tag do projeto financeiro> .
 docker run --name api-financeiro --net api_saga -p 8082:8082 -d <nome da tag do projeto financeiro>
 ```
 
-- Para testar:
+#### Passo a passo usando Kubernets: ####
+
+- Rabbit
+Pacote ./infra/rabbit/k8s
+
 ```
-URL: http://localhost:8081/pedido
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+```
+- Configurar Rabbit: Igual ao Docker
+
+
+- Pedido
+Pacote ./pedido/k8s
+
+```
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+```
+
+- Financeiro
+Pacote ./financeiro/k8s
+
+```
+kubectl apply -f deployment.yaml
+```
+### Para testar:
+```
+Utilizando Docker:
+ - URL: http://localhost:8081/pedido 
+
+Utilizando Kubernets:
+ - URL: http://ip-externo:8081/pedido 
+
 content-type: application/json
 body:
 {
@@ -109,9 +140,8 @@ body:
   ]
 }
 ```
-
 ## OBS: ##
 
 - Apenas para efeito de testes, o CPF não é necessario ser valido
-- Para ver o erro de credito insuficiente usar o cpf: 11122233344
-- Proximos passos configurar o K8s
+- Para ver o erro de credito insuficiente e validar a transação de compensação, usar cpf: 11122233344
+- Para testes locais do Kubernets usei [minikube](https://minikube.sigs.k8s.io/docs/)

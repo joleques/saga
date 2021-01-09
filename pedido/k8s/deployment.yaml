@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-pedido
-        image: joleques/api_pedido:v1
+        image: joleques/api_pedido:v2
         resources:
           limits:
             memory: "128Mi"
